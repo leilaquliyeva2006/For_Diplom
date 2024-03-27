@@ -42,6 +42,7 @@ function removeCartItem(event) {
   buttonClicked.parentElement.remove();
   updateTotal();
   saveCartItems();
+  updateCartIcon();
 }
 function quantityChanged(event) {
   let input = event.target;
@@ -50,6 +51,7 @@ function quantityChanged(event) {
   }
   updateTotal();
   saveCartItems();
+  updateCartIcon();
 }
 
 function addCartClecked(event) {
@@ -61,6 +63,7 @@ function addCartClecked(event) {
   addProductToCart(title, price, productImg);
   updateTotal();
   saveCartItems();
+  updateCartIcon();
 }
 
 function addProductToCart(title, price, productImg) {
@@ -91,6 +94,7 @@ function addProductToCart(title, price, productImg) {
     .getElementsByClassName("cart-quantity")[0]
     .addEventListener("change", quantityChanged);
   saveCartItems();
+  updateCartIcon();
 }
 
 function updateTotal() {
@@ -150,4 +154,38 @@ function loadCartItems() {
     document.getElementsByClassName("total-price")[0].innerText =
       "$" + cartTotal;
   }
+  updateCartIcon();
 }
+
+function updateCartIcon() {
+  let cartBoxes = document.getElementsByClassName("cart-box");
+  let quantity = 0;
+  if (cartBoxes.length > 0) {
+    for (let i = 0; i < cartBoxes.length; i++) {
+      let cartBox = cartBoxes[i];
+      let quantityElement = cartBox.getElementsByClassName("cart-quantity")[0];
+      quantity += Number(quantityElement.value);
+    }
+  } else {
+    quantity = 0;
+  }
+  let cartIcon = document.querySelector("#cart-icon");
+  cartIcon.setAttribute("data-quantity", quantity);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  let payNowButton = document.querySelector(".btn-buy");
+
+  payNowButton.addEventListener("click", function () {
+    let cartContent = document.querySelector(".cart-content");
+    if (cartContent.children.length === 0) {
+      alert("Your cart is empty. Please add some products.");
+    } else {
+      let cartTotal = localStorage.getItem("cartTotal");
+      let cartItems = localStorage.getItem("cartItems");
+      window.location.href = `checkout.html?total=${cartTotal}&items=${encodeURIComponent(
+        cartItems
+      )}`;
+    }
+  });
+});
