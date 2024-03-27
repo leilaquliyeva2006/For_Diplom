@@ -39,14 +39,16 @@ function ready() {
 function removeCartItem(event) {
   let buttonClicked = event.target;
   buttonClicked.parentElement.remove();
-  updateTotal()
+  updateTotal();
+  saveCartItems();
 }
 function quantityChanged(event) {
   let input = event.target;
   if (isNaN(input.value) || input.value <= 0) {
     input.value = 1;
   }
-  updateTotal()
+  updateTotal();
+  saveCartItems();
 }
 
 function addCartClecked(event) {
@@ -56,7 +58,8 @@ function addCartClecked(event) {
   let price = shopProducts.getElementsByClassName("price")[0].innerText;
   let productImg = shopProducts.getElementsByClassName("product-img")[0].src;
   addProductToCart(title, price, productImg);
-  updateTotal()
+  updateTotal();
+  saveCartItems();
 }
 
 function addProductToCart(title, price, productImg) {
@@ -86,24 +89,43 @@ function addProductToCart(title, price, productImg) {
   cartShopBox
     .getElementsByClassName("cart-quantity")[0]
     .addEventListener("change", quantityChanged);
-    
+  saveCartItems();
 }
 
-
 function updateTotal() {
-    let cartContent = document.getElementsByClassName("cart-content")[0];
-    let cartBoxes = cartContent.getElementsByClassName("cart-box");
-    let total = 0;
-    for (let i = 0; i < cartBoxes.length; i++) {
-      let cartBox = cartBoxes[i];
-      let priceElement = cartBox.getElementsByClassName("cart-price")[0];
-      let quantityElement = cartBox.getElementsByClassName("cart-quantity")[0];
-      let price = Number(priceElement.innerText.replace("$", ""));
-      let quantity = quantityElement.value;
-      total += price * quantity;
-    }
-    document.getElementsByClassName("total-price")[0].innerText = "$" + total;
-  
-    localStorage.setItem("cartTotal", total);
+  let cartContent = document.getElementsByClassName("cart-content")[0];
+  let cartBoxes = cartContent.getElementsByClassName("cart-box");
+  let total = 0;
+  for (let i = 0; i < cartBoxes.length; i++) {
+    let cartBox = cartBoxes[i];
+    let priceElement = cartBox.getElementsByClassName("cart-price")[0];
+    let quantityElement = cartBox.getElementsByClassName("cart-quantity")[0];
+    let price = Number(priceElement.innerText.replace("$", ""));
+    let quantity = quantityElement.value;
+    total += price * quantity;
   }
-  
+  document.getElementsByClassName("total-price")[0].innerText = "$" + total;
+
+  localStorage.setItem("cartTotal", total);
+}
+
+function saveCartItems() {
+  let cartContent = document.getElementsByClassName("cart-content")[0];
+  let cartBoxes = cartContent.getElementsByClassName("cart-box");
+  let cartItems = [];
+  for (let i = 0; i < cartBoxes.length; i++) {
+    let cartBox = cartBoxes[i];
+    let titleElement = cartBox.getElementsByClassName("cart-product-title")[0];
+    let priceElement = cartBox.getElementsByClassName("cart-price")[0];
+    let quantityElement = cartBox.getElementsByClassName("cart-quantity")[0];
+    let productImg = cartBox.getElementsByClassName("card-img")[0].src;
+    let item = {
+      title: titleElement.innerText,
+      price: priceElement.innerText,
+      quantity: quantityElement.value,
+      productImg: productImg,
+    };
+    cartItems.push(item);
+  }
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+}
