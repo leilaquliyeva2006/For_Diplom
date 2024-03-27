@@ -39,12 +39,14 @@ function ready() {
 function removeCartItem(event) {
   let buttonClicked = event.target;
   buttonClicked.parentElement.remove();
+  updateTotal()
 }
 function quantityChanged(event) {
   let input = event.target;
   if (isNaN(input.value) || input.value <= 0) {
     input.value = 1;
   }
+  updateTotal()
 }
 
 function addCartClecked(event) {
@@ -54,6 +56,7 @@ function addCartClecked(event) {
   let price = shopProducts.getElementsByClassName("price")[0].innerText;
   let productImg = shopProducts.getElementsByClassName("product-img")[0].src;
   addProductToCart(title, price, productImg);
+  updateTotal()
 }
 
 function addProductToCart(title, price, productImg) {
@@ -83,4 +86,24 @@ function addProductToCart(title, price, productImg) {
   cartShopBox
     .getElementsByClassName("cart-quantity")[0]
     .addEventListener("change", quantityChanged);
+    
 }
+
+
+function updateTotal() {
+    let cartContent = document.getElementsByClassName("cart-content")[0];
+    let cartBoxes = cartContent.getElementsByClassName("cart-box");
+    let total = 0;
+    for (let i = 0; i < cartBoxes.length; i++) {
+      let cartBox = cartBoxes[i];
+      let priceElement = cartBox.getElementsByClassName("cart-price")[0];
+      let quantityElement = cartBox.getElementsByClassName("cart-quantity")[0];
+      let price = Number(priceElement.innerText.replace("$", ""));
+      let quantity = quantityElement.value;
+      total += price * quantity;
+    }
+    document.getElementsByClassName("total-price")[0].innerText = "$" + total;
+  
+    localStorage.setItem("cartTotal", total);
+  }
+  
