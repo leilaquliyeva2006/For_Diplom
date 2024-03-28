@@ -8,3 +8,6 @@ document.getElementById("product2").addEventListener("click", function () {
 document.getElementById("product3").addEventListener("click", function () {
   window.location.href = "product3.html";
 });
+document.getElementById("product4").addEventListener("click", function () {
+  window.location.href = "product4.html";
+});
