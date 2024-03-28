@@ -5,6 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jacobs</title>
     <link rel="stylesheet" href="/css/all-product.css">
+    const prevButton = document.querySelector(".prev");
+    const nextButton = document.querySelector(".next");
+    const images = document.querySelectorAll(".gallery img");
+    let currentIndex = 0;
+    
+    prevButton.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      updateGallery();
+    });
+    
+    nextButton.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      updateGallery();
+    });
+    
+    function updateGallery() {
+      images.forEach((img, index) => {
+        if (index === currentIndex) {
+          img.classList.add("selected");
+        } else {
+          img.classList.remove("selected");
+        }
+      });
+    }
+    
+    
+    
+    document.querySelector(".home-button").addEventListener("click", function() {
+        window.location.href = "index.html";
+    });
+    
   </head>
   <body>
     <h1>Product Details</h1>
