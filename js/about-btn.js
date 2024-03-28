@@ -14,7 +14,9 @@ document.getElementById("product4").addEventListener("click", function () {
 document.getElementById("product5").addEventListener("click", function () {
   window.location.href = "product5.html";
 });
-document.getElementById("product6").addEventListener("click", function() {
-    window.location.href = "product6.html";
-  });
-  
+document.getElementById("product6").addEventListener("click", function () {
+  window.location.href = "product6.html";
+});
+document.getElementById("product7").addEventListener("click", function () {
+  window.location.href = "product7.html";
+});
