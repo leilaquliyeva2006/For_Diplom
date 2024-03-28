@@ -11,3 +11,6 @@ document.getElementById("product3").addEventListener("click", function () {
 document.getElementById("product4").addEventListener("click", function () {
   window.location.href = "product4.html";
 });
+document.getElementById("product5").addEventListener("click", function () {
+  window.location.href = "product5.html";
+});
