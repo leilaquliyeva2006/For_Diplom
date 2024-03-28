@@ -20,3 +20,6 @@ document.getElementById("product6").addEventListener("click", function () {
 document.getElementById("product7").addEventListener("click", function () {
   window.location.href = "product7.html";
 });
+document.getElementById("product8").addEventListener("click", function () {
+  window.location.href = "product8.html";
+});
