@@ -72,16 +72,15 @@ function cancelOrder() {
   window.location.href = "cancel.html";
 }
 
-
 const cardNumberInput = document.getElementById("card-number");
 const cvvInput = document.getElementById("cvv");
 
 cardNumberInput.addEventListener("input", function (event) {
-  this.value = this.value.replace(/\D/g, ""); 
+  this.value = this.value.replace(/\D/g, "");
 });
 
 cvvInput.addEventListener("input", function (event) {
-  this.value = this.value.replace(/\D/g, ""); 
+  this.value = this.value.replace(/\D/g, "");
 });
 
 function isEmailValid(email) {
@@ -91,7 +90,6 @@ function isEmailValid(email) {
 function isCardValid(cardNumber) {
   const cardNumArr = cardNumber.replace(/\D/g, "").split("").reverse();
 
- 
   let sum = 0;
   for (let i = 0; i < cardNumArr.length; i++) {
     let cardNum = parseInt(cardNumArr[i]);
