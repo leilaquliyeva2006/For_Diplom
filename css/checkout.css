@@ -12,25 +12,141 @@ body {
   --container-color: #1e1e2a;
 }
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .nav {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
-    text-align: center;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
 }
 
 .logo {
-    color: #fff;
-    text-decoration: none;
-    font-size: 24px;
-    font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .checkout {
+  margin-top: 20px;
+}
+
+.order-summary,
+.customer-details {
+  width: 50%;
+  float: left;
+  margin-bottom: 20px;
+}
+
+.order-summary h2,
+.customer-details h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.order-summary p,
+.order-summary ul {
+  margin-bottom: 10px;
+}
+
+.order-summary ul li {
+  list-style: none;
+}
+
+.order-summary ul li img {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.customer-details form {
+  display: flex;
+  flex-direction: column;
+}
+
+.customer-details form label {
+  margin-bottom: 5px;
+}
+
+.customer-details form input,
+.customer-details form textarea,
+.customer-details form select {
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#credit-card-info {
+  margin-top: 20px;
+  padding: 10px;
+}
+
+#credit-card-info h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+button[type="submit"],
+button[type="button"] {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button[type="submit"]:hover,
+button[type="button"]:hover {
+  background-color: #555;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .order-summary,
+  .customer-details {
+    width: 100%;
     margin-top: 20px;
+  }
+
+  .order-summary h2,
+  .customer-details h2 {
+    font-size: 1.5rem;
+  }
+
+  .order-summary p,
+  .order-summary ul {
+    font-size: 1.2rem;
+  }
+
+  .customer-details form {
+    width: 100%;
+  }
+
+  .customer-details form label {
+    font-size: 1.2rem;
+  }
+
+  .customer-details form input,
+  .customer-details form textarea,
+  .customer-details form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    font-size: 1rem;
+  }
+
+  .customer-details form button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.2rem;
+  }
 }
