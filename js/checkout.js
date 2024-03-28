@@ -17,7 +17,6 @@ items.forEach((item) => {
   itemsList.appendChild(li);
 });
 
-
 const expirationYearSelect = document.getElementById("expiration-year");
 const currentYear = new Date().getFullYear();
 const yearsAhead = 10;
@@ -30,7 +29,9 @@ for (let i = 0; i <= yearsAhead; i++) {
   expirationYearSelect.add(option);
 }
 
-document.getElementById("checkoutForm").addEventListener("submit", function (event) {
+document
+  .getElementById("checkoutForm")
+  .addEventListener("submit", function (event) {
     event.preventDefault();
 
     const formData = new FormData(this);
@@ -58,3 +59,15 @@ document.getElementById("checkoutForm").addEventListener("submit", function (eve
 
     completeOrder(name, email, address, paymentMethod);
   });
+
+function completeOrder(name, email, address, paymentMethod) {
+  localStorage.removeItem("cartItems");
+  localStorage.removeItem("cartTotal");
+  window.location.href = "success.html";
+}
+
+function cancelOrder() {
+  localStorage.removeItem("cartItems");
+  localStorage.removeItem("cartTotal");
+  window.location.href = "cancel.html";
+}
