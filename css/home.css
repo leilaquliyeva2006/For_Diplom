@@ -217,6 +217,24 @@ section {
   grid-template-columns: repeat(auto-fit, minmax(220px, auto));
   gap: 1.5rem;
 }
+.product-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-box--footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.product-box--footer > .price {
+  width: 100%;
+}
+.product-box--footer > * {
+  width: 50%;
+}
 
 .product-box,
 .product-title,
@@ -246,14 +264,12 @@ section {
   width: 100%;
   height: auto;
   border-radius: 5px;
-  margin-bottom: 0.5rem;
 }
 
 .product-title {
   font-size: 1.2rem;
   font-weight: 600;
   text-transform: uppercase;
-  margin-bottom: 0.8rem;
 }
 
 .price {
@@ -262,9 +278,10 @@ section {
 }
 
 .add-cart {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
+  --size: 32px;
+  position: relative;
+  width: var(--size);
+  height: var(--size);
   background-color: var(--text-color);
   color: var(--bg-color);
   padding: 4px;
@@ -272,12 +289,20 @@ section {
   border-radius: 50%;
   cursor: pointer;
 }
-
+.add-cart::before {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
 .add-cart:hover,
 .btn-about:hover {
   background: hsl(249, 32%, 17%);
 }
 .btn-about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   bottom: 5px;
   padding: 5px 5px;
   background-color: var(--text-color);

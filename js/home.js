@@ -5,9 +5,13 @@ bags.forEach((bag) => {
 <div class="product-box">
 <img src="/all_images/bags_images/${bag.id}.jpg" alt="" class="product-img" />
 <h2 class="product-title">${bag.name}</h2>
+
+<div class="product-box--footer">
 <span class="price">$${bag.price}</span>
-<i class="bx bx-shopping-bag add-cart"></i>
 <a href="/html/${bag.id}" class="btn-about">About</a>
+<i class="bx bx-shopping-bag add-cart"></i>
+
+</div>
 </div>
 
 
