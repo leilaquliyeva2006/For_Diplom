@@ -5,36 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jacobs</title>
     <link rel="stylesheet" href="/css/all-product.css">
-    const prevButton = document.querySelector(".prev");
-    const nextButton = document.querySelector(".next");
-    const images = document.querySelectorAll(".gallery img");
-    let currentIndex = 0;
-    
-    prevButton.addEventListener("click", () => {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      updateGallery();
-    });
-    
-    nextButton.addEventListener("click", () => {
-      currentIndex = (currentIndex + 1) % images.length;
-      updateGallery();
-    });
-    
-    function updateGallery() {
-      images.forEach((img, index) => {
-        if (index === currentIndex) {
-          img.classList.add("selected");
-        } else {
-          img.classList.remove("selected");
-        }
-      });
-    }
-    
-    
-    
-    document.querySelector(".home-button").addEventListener("click", function() {
-        window.location.href = "index.html";
-    });
+
     
   </head>
   <body>
@@ -61,14 +32,9 @@
       <button class="next"></button>
     </div>
     <ul>
-      <li><strong>Marc Jacobs The Colorblock Snapshot</strong></li>
-      <li><strong>Black saffiano leather</strong></li>
-      <li>
         <strong>Features:</strong> Removable jacquard shoulder strap,
         silver-tone double-J hardware, slip pocket
       </li>
-      <li><strong>Internal:</strong> Slip pocket, faille lining</li>
-      <li><strong>Closure:</strong> Zip closure</li>
       <li><strong>Designer colour:</strong> Black/Multi</li>
     </ul>
     <button class="home-button">Back to Home</button>

@@ -1,3 +1,22 @@
+const bagsContainer = document.querySelector(".shop-content");
+
+bags.forEach((bag) => {
+  bagsContainer.innerHTML += `
+<div class="product-box">
+<img src="/all_images/bags_images/${bag.id}.jpg" alt="" class="product-img" />
+<h2 class="product-title">${bag.name}</h2>
+<span class="price">$${bag.price}</span>
+<i class="bx bx-shopping-bag add-cart"></i>
+<a href="/html/${bag.id}" class="btn-about">About</a>
+</div>
+
+
+
+
+
+`;
+});
+
 let cartIcon = document.querySelector("#cart-icon");
 let cart = document.querySelector(".cart");
 let closeCart = document.querySelector("#close-cart");
@@ -189,4 +208,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
-
