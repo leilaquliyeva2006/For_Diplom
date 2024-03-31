@@ -67,7 +67,7 @@ function completeOrder(name, email, address, paymentMethod) {
 }
 
 function back() {
-  window.location.href = "home.html";
+  window.location.href = "/home.html";
 }
 
 const cardNumberInput = document.getElementById("card-number");

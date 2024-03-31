@@ -202,9 +202,8 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       let cartTotal = localStorage.getItem("cartTotal");
       let cartItems = localStorage.getItem("cartItems");
-      window.location.href = `checkout.html?total=${cartTotal}&items=${encodeURIComponent(
-        cartItems
-      )}`;
+      window.location.href = `html/checkout.html?total=${cartTotal}&items=${encodeURIComponent(cartItems)}`;
+
     }
   });
 });

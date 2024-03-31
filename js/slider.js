@@ -23,6 +23,6 @@ function updateGallery() {
   });
 }
 
-document.querySelector(".home-button").addEventListener("click", function() {
-    window.location.href = "home.html";
+document.querySelector(".hm").addEventListener("click", function() {
+  window.location.href = "/home.html";
 });
