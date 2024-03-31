@@ -8,16 +8,11 @@ bags.forEach((bag) => {
 
 <div class="product-box--footer">
 <span class="price">$${bag.price}</span>
-<a href="/html/${bag.id}" class="btn-about">About</a>
+<a href="/html/about.html?id=${bag.id}" class="btn-about">About</a>
 <i class="bx bx-shopping-bag add-cart"></i>
 
 </div>
 </div>
-
-
-
-
-
 `;
 });
 
@@ -77,12 +72,13 @@ function quantityChanged(event) {
   updateCartIcon();
 }
 
+
 function addCartClecked(event) {
   let button = event.target;
-  let shopProducts = button.parentElement;
-  var title = shopProducts.getElementsByClassName("product-title")[0].innerText;
-  let price = shopProducts.getElementsByClassName("price")[0].innerText;
-  let productImg = shopProducts.getElementsByClassName("product-img")[0].src;
+  let shopProducts = button.closest(".product-box"); 
+  let title = shopProducts.querySelector(".product-title").innerText;
+  let price = shopProducts.querySelector(".price").innerText;
+  let productImg = shopProducts.querySelector(".product-img").src;
   addProductToCart(title, price, productImg);
   updateTotal();
   saveCartItems();
