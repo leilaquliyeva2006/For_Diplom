@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Checkout</title>
     <script defer src="/js/checkout.js"></script>
-    <link rel="stylesheet" href="/css/checkout.css">
+    <link rel="stylesheet" href="/css/checkout.css" />
   </head>
   <body>
     <header>
@@ -34,12 +34,11 @@
             id="email"
             name="email"
             required
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
           />
+          
 
           <label for="address">Shipping Address:</label>
           <textarea id="address" name="address" required></textarea>
-
 
           <div id="credit-card-info">
             <h3>Credit Card Information</h3>
@@ -89,5 +88,11 @@
         </form>
       </div>
     </section>
+
+    <script>
+      function back() {
+        window.location.href = "/home.html";
+      }
+    </script>
   </body>
 </html>

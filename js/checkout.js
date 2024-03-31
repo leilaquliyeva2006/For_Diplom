@@ -42,7 +42,7 @@ document
     const cardNumber = formData.get("card-number");
     const cvv = formData.get("cvv");
 
-    if (!name || !email || !address || !paymentMethod) {
+    if (!name || !email || !address) {
       alert("Please complete all fields.");
       return;
     }
