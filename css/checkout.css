@@ -103,12 +103,15 @@ body {
 button[type="submit"],
 button[type="button"] {
   padding: 10px 20px;
+  margin: 5px 0; 
   background-color: #333;
   color: #fff;
   border: none;
   cursor: pointer;
   font-size: 16px;
+
 }
+
 
 button[type="submit"]:hover,
 button[type="button"]:hover {

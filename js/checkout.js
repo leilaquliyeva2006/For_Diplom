@@ -66,10 +66,8 @@ function completeOrder(name, email, address, paymentMethod) {
   window.location.href = "success.html";
 }
 
-function cancelOrder() {
-  localStorage.removeItem("cartItems");
-  localStorage.removeItem("cartTotal");
-  window.location.href = "cancel.html";
+function back() {
+  window.location.href = "home.html";
 }
 
 const cardNumberInput = document.getElementById("card-number");
