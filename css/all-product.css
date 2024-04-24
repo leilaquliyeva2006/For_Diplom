@@ -1,3 +1,5 @@
+@import '../gallery/gallery.css';
+
 :root {
   --main-color: #fd4646;
   --text-color: #02ac70;
@@ -5,89 +7,95 @@
   --container-color: #1e1e2a;
 }
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  color: var(--bg-color);
-  background: var(--container-color);
+	display: grid;
+	min-height: 100vh;
+	grid-template-areas:
+			"header  header"
+			"gallery info"
+			"footer  footer";
+	grid-template-columns: 1fr 2fr;
+	grid-template-rows: 100px 1fr 100px;
+	column-gap: 30px;
+
+	padding: 16px;
+
+	font-family: Arial, sans-serif;
+	color: var(--bg-color);
+	background: var(--container-color);
+}
+
+.gallery-container {
+	grid-area: gallery;
 }
 
 h1 {
-  text-align: center;
+	text-align: center;
+	grid-area: header;
 }
 
-ul {
-  margin-left: 450px;
-  margin-top: -300px;
-  list-style: none;
-  padding: 0;
+.name {
+	font-size: 2rem;
 }
 
-li {
-  margin-bottom: 10px;
+.price {
+	font-size: 1.5rem;
 }
 
-.gallery {
-  max-width: 400px;
-  position: relative;
-  text-align: center;
-  margin-left: 20px;
+hr {
+	margin: 20px 0;
 }
 
-.gallery img {
-  max-width: 400px;
-  border: 1px solid #ccc;
-  display: none;
+.detailed-info > ul {
+	list-style: none;
 }
 
-.gallery img.selected {
-  display: block;
+h2 {
+	font-size: 1.8rem;
 }
 
-.gallery button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 10px;
-  color: #000;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+h3 {
+	font-size: 1.5rem;
 }
 
-.gallery button:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+.description {
+	padding-left: 20px;
 }
 
-.prev::before {
-  content: "◀";
+ul ul {
+	list-style: disc;
 }
 
-.next::before {
-  content: "▶";
+.description,
+ul ul > li {
+	font-size: 1.3rem;
 }
 
-.prev {
-  left: 10px;
-}
-
-.next {
-  right: 10px;
-}
 .hm {
-  display: block;
-  width: 150px;
-  margin: 20px auto;
-  padding: 10px;
-  text-align: center;
-  color: #fff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  text-decoration: none;
-  background: var(--text-color);
-  color: var(--bg-color);
+	display: block;
+	width: 150px;
+	height: min-content;
+	padding: 10px;
+	margin: auto;
+	background: var(--text-color);
+
+	text-decoration: none;
+	text-align: center;
+	color: var(--bg-color);
+
+	border: none;
+	border-radius: 5px;
+
+	cursor: pointer;
+
+	grid-area: footer;
+}
+
+@media only screen and (max-width: 800px) {
+	body {
+		grid-template:
+			"header" 100px
+			"gallery" 1fr
+			"info" 1fr
+			"footer" 100px / 1fr;
+	}
 }

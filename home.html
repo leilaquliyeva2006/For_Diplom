@@ -8,15 +8,16 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/css/home.css" />
-    <script defer src="/js/bags.js"></script>
-    <script defer src="/js/home.js"></script>
+    <script defer type="module" src="/js/bags.js"></script>
+    <script defer type="module" src="/js/home.js"></script>
     <title>MB</title>
   </head>
   <body>
-    <!-- Navbar -->
     <header>
       <div class="nav container">
         <a href="#" class="logo">Bags</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact Us</a>
         <i class="bx bxs-shopping-bags" id="cart-icon" data-quantitiy="0"></i>
 
         <div class="cart">
@@ -31,9 +32,52 @@
         </div>
       </div>
     </header>
+
+    
     <section class="shop containe">
+
+      <div class="sort-controls">
+        <label for="sort-select">Sort by:</label>
+        <select id="sort-select">
+          <option value="price-descending">Price: High to Low</option>
+          <option value="price-ascending">Price: Low to High</option>
+          <option value="brand-name">Brand Name</option>
+          <option value="product-name">Product Name</option>
+        </select>
+        <button id="sort-btn">Sort</button>
+      </div>
       <h2 class="section-title">Shop Product</h2>
       <div class="shop-content"></div>
     </section>
+    <div class="pagination container">
+      <button id="prev-page">&lt;</button>
+      <span id="page-info">Page 1 of 1</span>
+      <button id="next-page">&gt;</button>
+    </div>
+
+    <footer>
+      <div class="footerContainer">
+        <div class="socialIcons">
+          <a href=""><i class="bx bxl-facebook-circle"></i></a>
+          <a href=""><i class="bx bxl-instagram"></i></a>
+          <a href=""><i class="bx bxl-google-plus-circle"></i></a>
+          <a href=""><i class="bx bxl-twitter"></i></a>
+        </div>
+
+        <div class="footerNav">
+          <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Contact us</a></li>
+          </ul>
+        </div>
+
+       
+      </div> <div class="footerBottom">
+          <p>
+            Copyright &copy;2024;Designed by <span class="desinger">Leila</span>
+          </p>
+        </div>
+    </footer>
   </body>
 </html>

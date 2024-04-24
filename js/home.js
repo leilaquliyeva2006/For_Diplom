@@ -1,19 +1,19 @@
+import bags from "./bags.js";
+
 const bagsContainer = document.querySelector(".shop-content");
 
 bags.forEach((bag) => {
   bagsContainer.innerHTML += `
-<div class="product-box">
-<img src="/all_images/bags_images/${bag.id}.jpg" alt="" class="product-img" />
-<h2 class="product-title">${bag.name}</h2>
-
-<div class="product-box--footer">
-<span class="price">$${bag.price}</span>
-<a href="/html/about.html?id=${bag.id}" class="btn-about">About</a>
-<i class="bx bx-shopping-bag add-cart"></i>
-
-</div>
-</div>
-`;
+    <div class="product-box">
+      <img src="${bag.images[0]}" alt="" class="product-img" />
+      <h2 class="product-title">${bag.name}</h2>
+      <div class="product-box--footer">
+        <span class="price">$${bag.price}</span>
+        <a href="/html/about.html?id=${bag.id}" class="btn-about">About</a>
+        <i class="bx bx-shopping-bag add-cart"></i>
+      </div>
+    </div>
+  `;
 });
 
 let cartIcon = document.querySelector("#cart-icon");
@@ -50,7 +50,7 @@ function ready() {
   let addCart = document.getElementsByClassName("add-cart");
   for (let i = 0; i < addCart.length; i++) {
     let button = addCart[i];
-    button.addEventListener("click", addCartClecked);
+    button.addEventListener("click", addCartClicked);
   }
   loadCartItems();
 }
@@ -62,6 +62,7 @@ function removeCartItem(event) {
   saveCartItems();
   updateCartIcon();
 }
+
 function quantityChanged(event) {
   let input = event.target;
   if (isNaN(input.value) || input.value <= 0) {
@@ -72,10 +73,9 @@ function quantityChanged(event) {
   updateCartIcon();
 }
 
-
-function addCartClecked(event) {
+function addCartClicked(event) {
   let button = event.target;
-  let shopProducts = button.closest(".product-box"); 
+  let shopProducts = button.closest(".product-box");
   let title = shopProducts.querySelector(".product-title").innerText;
   let price = shopProducts.querySelector(".price").innerText;
   let productImg = shopProducts.querySelector(".product-img").src;
@@ -92,12 +92,12 @@ function addProductToCart(title, price, productImg) {
   let cartItemsNames = cartItems.getElementsByClassName("cart-product-title");
   for (let i = 0; i < cartItemsNames.length; i++) {
     if (cartItemsNames[i].innerText == title) {
-      alert("You have alreaady added this item to cart");
+      alert("You have already added this item to cart");
       return;
     }
   }
   let cartBoxContent = `
-     <img src="${productImg}" alt="" class="card-img" />
+    <img src="${productImg}" alt="" class="card-img" />
     <div class="detail-box">
       <div class="cart-product-title">${title}</div>
       <div class="cart-price">${price}</div>
@@ -153,6 +153,7 @@ function saveCartItems() {
   }
   localStorage.setItem("cartItems", JSON.stringify(cartItems));
 }
+
 function loadCartItems() {
   let cartItems = localStorage.getItem("cartItems");
   if (cartItems) {
@@ -202,8 +203,166 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       let cartTotal = localStorage.getItem("cartTotal");
       let cartItems = localStorage.getItem("cartItems");
-      window.location.href = `html/checkout.html?total=${cartTotal}&items=${encodeURIComponent(cartItems)}`;
-
+      window.location.href = `html/checkout.html?total=${cartTotal}&items=${encodeURIComponent(
+        cartItems
+      )}`;
     }
   });
+});
+document.addEventListener("DOMContentLoaded", function () {
+  function displayItemsOnPage(currentPage) {
+    const itemsPerPage = 10;
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const itemsToShow = bags.slice(startIndex, endIndex);
+
+    const shopContent = document.querySelector(".shop-content");
+    shopContent.innerHTML = "";
+
+    itemsToShow.forEach((item) => {
+      const itemElement = document.createElement("div");
+      itemElement.classList.add("product-box");
+      itemElement.innerHTML = `
+        <img src="${item.images[0]}" alt="" class="product-img" />
+        <h2 class="product-title">${item.name}</h2>
+        <div class="product-box--footer">
+          <span class="price">$${item.price}</span>
+          <a href="/html/about.html?id=${item.id}" class="btn-about">About</a>
+          <i class="bx bx-shopping-bag add-cart"></i>
+        </div>
+      `;
+      shopContent.appendChild(itemElement);
+      const addToCartButton = itemElement.querySelector(".add-cart");
+      addToCartButton.addEventListener("click", () => {
+        addProductToCart(
+          item.brand + " " + item.name,
+          "$" + item.price,
+          item.images[0]
+        );
+      });
+    });
+
+    const pageInfo = document.getElementById("page-info");
+    pageInfo.textContent = `Page ${currentPage} of ${Math.ceil(
+      bags.length / itemsPerPage
+    )}`;
+  }
+
+  displayItemsOnPage(1);
+
+  document.getElementById("prev-page").addEventListener("click", () => {
+    let currentPage = parseInt(
+      document.getElementById("page-info").textContent.split(" ")[1]
+    );
+    if (currentPage > 1) {
+      currentPage--;
+      displayItemsOnPage(currentPage);
+    }
+  });
+
+  document.getElementById("next-page").addEventListener("click", () => {
+    let currentPage = parseInt(
+      document.getElementById("page-info").textContent.split(" ")[1]
+    );
+    const totalPages = Math.ceil(bags.length / 10);
+    if (currentPage < totalPages) {
+      currentPage++;
+      displayItemsOnPage(currentPage);
+    }
+  });
+});
+
+function sortByPriceDescending(a, b) {
+  return b.price - a.price;
+}
+
+
+function sortByPriceAscending(a, b) {
+  return a.price - b.price;
+}
+
+
+function sortByBrandName(a, b) {
+  const brandA = a.brand.toUpperCase();
+  const brandB = b.brand.toUpperCase();
+  if (brandA < brandB) {
+    return -1;
+  }
+  if (brandA > brandB) {
+    return 1;
+  }
+  return 0;
+}
+
+function sortByName(a, b) {
+  const nameA = a.name.toUpperCase();
+  const nameB = b.name.toUpperCase();
+  if (nameA < nameB) {
+    return -1;
+  }
+  if (nameA > nameB) {
+    return 1;
+  }
+  return 0;
+}
+
+
+function displayItemsOnPage(pageNumber) {
+  const itemsPerPage = 10;
+  const startIndex = (pageNumber - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const itemsToShow = bags.slice(startIndex, endIndex);
+
+  const shopContent = document.querySelector(".shop-content");
+  shopContent.innerHTML = ""; 
+
+  itemsToShow.forEach((item) => {
+    const itemElement = document.createElement("div");
+    itemElement.classList.add("product-box");
+    itemElement.innerHTML = `
+      <img src="${item.images[0]}" alt="" class="product-img" />
+      <h2 class="product-title">${item.name}</h2>
+      <div class="product-box--footer">
+        <span class="price">$${item.price}</span>
+        <a href="/html/about.html?id=${item.id}" class="btn-about">About</a>
+        <i class="bx bx-shopping-bag add-cart"></i>
+      </div>
+    `;
+    shopContent.appendChild(itemElement);
+    const addToCartButton = itemElement.querySelector(".add-cart");
+    addToCartButton.addEventListener("click", () => {
+      addProductToCart(
+        item.brand + " " + item.name,
+        "$" + item.price,
+        item.images[0]
+      );
+    });
+  });
+
+  const pageInfo = document.getElementById("page-info");
+  pageInfo.textContent = `Page ${pageNumber} of ${Math.ceil(
+    bags.length / itemsPerPage
+  )}`;
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const sortButton = document.getElementById("sort-btn");
+
+  sortButton.addEventListener("click", function () {
+    const sortBy = document.getElementById("sort-select").value;
+
+    if (sortBy === "price-descending") {
+      bags.sort(sortByPriceDescending);
+    } else if (sortBy === "price-ascending") {
+      bags.sort(sortByPriceAscending);
+    } else if (sortBy === "brand-name") {
+      bags.sort(sortByBrandName);
+    } else if (sortBy === "product-name") {
+      bags.sort(sortByName);
+    }
+
+    displayItemsOnPage(1);
+  });
+
+  displayItemsOnPage(1); 
 });

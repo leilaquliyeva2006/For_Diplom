@@ -1,31 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jacobs</title>
-    <link rel="stylesheet" href="/css/all-product.css" />
-    <script defer src="/js/bags.js"></script>
-    <script defer src="/js/about.js"></script>
-    <script defer src="/js/slider.js"></script>
-  </head>
-  <body>
-    <h1>Product Details</h1>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Jacobs</title>
+		<link rel="stylesheet" href="../css/all-product.css" />
+		<script defer type="module" src="../js/about.js"></script>
+	</head>
+	<body>
+		<h1>Product Details</h1>
 
-    <div class="gallery">
-      <button class="prev"></button>
-      <img src="" alt="Photo 1" tabindex="0" class="selected" />
-      <img src="" alt="Photo 2" tabindex="0" />
-      <img src="" alt="Photo 3" tabindex="0" />
-      <button class="next"></button>
-    </div>
-    <ul>
-      <li class="material"><strong>Material:</strong> <span></span></li>
-      <li class="features"><strong>Features:</strong><span></span></li>
-      <li class="color">
-        <strong>Designer colour:</strong><span></span>
-      </li>
-    </ul>
-    <button class="hm">Back to Home</button>
-  </body>
+		<div class="gallery-container"></div>
+
+		<div class="info">
+			<h2 class="name"></h2>
+			<p class="price"></p>
+
+			<hr>
+
+			<div class="detailed-info">
+				<h2>Product Information</h2>
+
+				<ul>
+					<li>
+						<h3>Description</h3>
+						<p class="description"></p>
+					</li>
+					<li>
+						<h3>Key Benefits</h3>
+						<ul class="benefits"></ul>
+					</li>
+					<li>
+						<h3>Features</h3>
+						<ul class="features"></ul>
+					</li>
+					<li>
+						<h3>Product Details</h3>
+						<ul class="product-details"></ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<a class="hm" href="../home.html">Back to Home</a>
+	</body>
 </html>
