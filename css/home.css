@@ -324,8 +324,6 @@ section {
   cursor: pointer;
 }
 
-
-
 .pagination {
   text-align: end;
   margin-top: 20px;
@@ -337,7 +335,6 @@ section {
   color: var(--bg-color);
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
-
 }
 
 .pagination button:hover {
@@ -358,7 +355,6 @@ section {
 
 footer {
   box-shadow: 0 1px 4px hsla(0, 0%, 98%, 0.1);
-  
 }
 .footerConatiner {
   width: 100%;
@@ -393,33 +389,30 @@ footer {
 
 .footerNav {
   margin: 30px 0;
-  
 }
 .footerNav ul {
   display: flex;
   justify-content: center;
   list-style-type: none;
-
 }
-.footerNav ul li a{
+.footerNav ul li a {
   color: white;
   margin: 20px;
-text-decoration: none;
+  text-decoration: none;
   font-size: 1.3em;
   opacity: 0.7;
   transition: 0.5s;
 }
-.footerNav ul li a:hover{
+.footerNav ul li a:hover {
   opacity: 1;
-    background-color: #292938 ;
+  background-color: #292938;
 }
-.footerBottom{
-  
-  background-color:#1a1a25;;
+.footerBottom {
+  background-color: #1a1a25;
   padding: 20px;
   text-align: center;
 }
-.footerBottom p{
+.footerBottom p {
   color: white;
 }
 .sort-controls {
@@ -443,7 +436,7 @@ text-decoration: none;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-right: 10px; 
+  margin-right: 10px;
 }
 
 .sort-controls select:hover {
@@ -462,13 +455,13 @@ text-decoration: none;
 }
 
 .sort-controls button:hover {
-  background-color:hsl(249, 32%, 17%);;
+  background-color: hsl(249, 32%, 17%);
 }
 
 .modal {
-  display: none; 
+  display: none;
   position: fixed;
-  z-index: 1; 
+  z-index: 1;
   left: 0;
   top: 0;
   width: 100%;
@@ -501,32 +494,32 @@ text-decoration: none;
   cursor: pointer;
 }
 
-
 .modal-content i {
   font-size: 20px;
 }
-.modal-content p,h2{
-  line-height: 2; 
+.modal-content p,
+h2 {
+  line-height: 2;
 }
 
 @media only screen and (max-width: 325px) {
   .container {
-    padding: 0 10px; 
+    padding: 0 10px;
   }
 
   .section-title {
-    font-size: 1rem; 
+    font-size: 1rem;
   }
 
   .product-img {
-    max-width: 80px; 
+    max-width: 80px;
   }
 
   .product-box {
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
   }
   header {
-    padding: 10px 0; 
+    padding: 10px 0;
   }
 
   .sort-controls {
@@ -534,14 +527,14 @@ text-decoration: none;
   }
 
   .sort-controls label {
-    margin-bottom: 5px; 
+    margin-bottom: 5px;
   }
 
   .sort-controls select {
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
   }
   .shop {
-    margin: 1rem 0.5rem; 
+    margin: 1rem 0.5rem;
   }
   .nav.container {
     flex-direction: column;
@@ -596,9 +589,11 @@ text-decoration: none;
     right: 10px;
     font-size: 24px;
   }
-
 }
 
+.siema {
+  padding: 90px 0;
+}
 
 @media only screen and (max-width: 370px) {
   .container {
@@ -606,7 +601,7 @@ text-decoration: none;
   }
 
   .section-title {
-    font-size: 1.1rem; 
+    font-size: 1.1rem;
   }
 
   .product-img {
@@ -618,19 +613,18 @@ text-decoration: none;
   }
 
   header {
-    padding: 15px 0; 
+    padding: 15px 0;
   }
 
   .sort-controls {
-    flex-direction: column; 
+    flex-direction: column;
   }
 
   .sort-controls label {
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
   }
 
   .sort-controls select {
-    margin-bottom: 15px; 
+    margin-bottom: 15px;
   }
-
 }

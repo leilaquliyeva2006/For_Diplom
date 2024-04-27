@@ -1,7 +1,6 @@
 import bags from "./bags.js";
 import Gallery from "../gallery/gallery.js";
 
-
 const urlParams = new URLSearchParams(window.location.search);
 const bagId = urlParams.get("id");
 const bag = bags.find((bag) => bag.id === bagId);
